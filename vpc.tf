@@ -67,12 +67,19 @@ resource "aws_internet_gateway" "ig1" {
 }
 #Creates "Public" Route Table 
 resource "aws_route_table" "Private_RouteTable" {
-  vpc_id = aws_vpc.main.id
-  route = []
-    tags = {
-    "Name" = "Private_RouteTable"
+vpc_id = aws_vpc.main.id
+
+  route {
+  cidr_block = "0.0.0.0/0"
+  gateway_id = aws_internet_gateway.ig1.id
+  }
+
+  tags = {
+    "Name" = "Public_RouteTable"
   }
 }
+
+
 #Create Route Table For Public Subnets
 resource "aws_nat_gateway" "natg1" {
   connectivity_type = "private"
