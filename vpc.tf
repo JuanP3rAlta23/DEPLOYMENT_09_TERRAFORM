@@ -27,3 +27,6 @@ resource "aws_subnet" "Public02" {
   map_public_ip_on_launch = true
   }
 }
+#Creates Private Subnet
+resource "aws_subnet" "Private" {
+  vpc_id     = aws_vpc.main.id
