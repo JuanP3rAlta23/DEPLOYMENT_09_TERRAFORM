@@ -7,6 +7,7 @@ resource "aws_vpc" "main" {
     Name = "Main VPC"
   }
 }
+
 #Creates Public Subnet 
 resource "aws_subnet" "Public01" {
   vpc_id     = aws_vpc.main.id
@@ -45,6 +46,10 @@ resource "aws_subnet" "Internal02" {
     Name = "Internal02"
   }
 }
+#Creates Internal Subnet 2
+resource "aws_internet_gateway" "ig1" {
+  vpc_id = aws_vpc.main.id
+
 #Creates Internet Gateway Subnet
 resource "aws_internet_gateway" "ig1" {
   vpc_id = aws_vpc.main.id
@@ -71,4 +76,7 @@ resource "aws_nat_gateway" "natg1" {
   }
 }
 #Associates "Public" Route Table to Public Subnet 1
-resource "aws_route_table_association" "Publicroute1"
+resource "aws_route_table_association" "Publicroute1" {
+  subnet_id      = aws_subnet.Public01.id
+  route_table_id = aws_route_table.Public_RouteTable.id
+}
