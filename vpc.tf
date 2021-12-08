@@ -23,3 +23,7 @@ resource "aws_subnet" "Public02" {
   cidr_block = "10.0.2.0/24"
   availability_zone = "us-east-1b"
   tags = {
+    Name = "Public02"
+  map_public_ip_on_launch = true
+  }
+}
