@@ -58,3 +58,7 @@ resource "aws_internet_gateway" "ig1" {
 resource "aws_route_table" "Private_RouteTable" {
   vpc_id = aws_vpc.main.id
   route = []
+    tags = {
+    "Name" = "Private_RouteTable"
+  }
+}
