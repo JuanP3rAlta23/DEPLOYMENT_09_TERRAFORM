@@ -37,3 +37,6 @@ resource "aws_subnet" "Private" {
   }
 }
 #Creates Internal Subnet 1
+resource "aws_subnet" "Internal02" {
+  vpc_id     = aws_vpc.main.id
+  cidr_block = "10.0.5.0/21"
