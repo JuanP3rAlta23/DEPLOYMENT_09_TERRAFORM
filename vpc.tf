@@ -79,6 +79,14 @@ vpc_id = aws_vpc.main.id
   }
 }
 
+#Creates "Private" Route Table 
+resource "aws_route_table" "Private_RouteTable" {
+  vpc_id = aws_vpc.main.id
+  route = []
+  tags = {
+    "Name" = "Private_RouteTable"
+  }
+}
 
 #Create Route Table For Public Subnets
 resource "aws_nat_gateway" "natg1" {
