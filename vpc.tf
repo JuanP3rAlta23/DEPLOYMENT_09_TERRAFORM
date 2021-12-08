@@ -38,12 +38,12 @@ resource "aws_subnet" "Private" {
   }
 }
 #Creates Internal Subnet 1
-resource "aws_subnet" "Internal02" {
+resource "aws_subnet" "Internal01" {
   vpc_id     = aws_vpc.main.id
-  cidr_block = "10.0.5.0/21"
-    availability_zone = "us-east-1b"
+  cidr_block = "10.0.4.0/21"
+  availability_zone = "us-east-1a"
   tags = {
-    Name = "Internal02"
+    Name = "Internal01"
   }
 }
 #Creates Internal Subnet 2
@@ -55,19 +55,18 @@ resource "aws_subnet" "Internal02" {
     Name = "Internal02"
   }
 }
-
 #Creates Internet Gateway Subnet
 resource "aws_internet_gateway" "ig1" {
   vpc_id = aws_vpc.main.id
-
-    tags = {
+  
+  tags = {
     Name = "Deploy09-IG"
     
   }
 }
 #Creates "Public" Route Table 
-resource "aws_route_table" "Private_RouteTable" {
-vpc_id = aws_vpc.main.id
+resource "aws_route_table" "Public_RouteTable" {
+  vpc_id = aws_vpc.main.id
 
   route {
   cidr_block = "0.0.0.0/0"
@@ -78,7 +77,6 @@ vpc_id = aws_vpc.main.id
     "Name" = "Public_RouteTable"
   }
 }
-
 #Creates "Private" Route Table 
 resource "aws_route_table" "Private_RouteTable" {
   vpc_id = aws_vpc.main.id
@@ -87,12 +85,12 @@ resource "aws_route_table" "Private_RouteTable" {
     "Name" = "Private_RouteTable"
   }
 }
-
 #Create Route Table For Public Subnets
 resource "aws_nat_gateway" "natg1" {
   connectivity_type = "private"
   subnet_id         = aws_subnet.Private.id
-      tags = {
+
+    tags = {
     Name = "Private NAT"
   }
 }
@@ -101,3 +99,13 @@ resource "aws_route_table_association" "Publicroute1" {
   subnet_id      = aws_subnet.Public01.id
   route_table_id = aws_route_table.Public_RouteTable.id
 }
+
+#Associates "Public" Route Table to Public Subnet 2
+resource "aws_route_table_association" "Publicroute2" {
+  subnet_id      = aws_subnet.Public02.id
+  route_table_id = aws_route_table.Public_RouteTable.id
+}
+#Associates "Private" Route Table to Private Subnet
+resource "aws_route_table_association" "Privateroute1" {
+  subnet_id      = aws_subnet.Private.id
+  route_table_id = aws_route_table.Private_RouteTable.id
