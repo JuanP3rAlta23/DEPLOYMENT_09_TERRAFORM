@@ -48,3 +48,9 @@ resource "aws_subnet" "Internal02" {
 #Creates Internet Gateway Subnet
 resource "aws_internet_gateway" "ig1" {
   vpc_id = aws_vpc.main.id
+
+    tags = {
+    Name = "Deploy09-IG"
+    
+  }
+}
