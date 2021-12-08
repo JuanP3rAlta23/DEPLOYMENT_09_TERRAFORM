@@ -63,3 +63,6 @@ resource "aws_route_table" "Private_RouteTable" {
   }
 }
 #Create Route Table For Public Subnets
+resource "aws_nat_gateway" "natg1" {
+  connectivity_type = "private"
+  subnet_id         = aws_subnet.Private.id
