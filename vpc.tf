@@ -40,3 +40,8 @@ resource "aws_subnet" "Private" {
 resource "aws_subnet" "Internal02" {
   vpc_id     = aws_vpc.main.id
   cidr_block = "10.0.5.0/21"
+    availability_zone = "us-east-1b"
+  tags = {
+    Name = "Internal02"
+  }
+}
