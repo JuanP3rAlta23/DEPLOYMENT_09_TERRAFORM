@@ -47,8 +47,14 @@ resource "aws_subnet" "Internal02" {
   }
 }
 #Creates Internal Subnet 2
-resource "aws_internet_gateway" "ig1" {
-  vpc_id = aws_vpc.main.id
+resource "aws_subnet" "Internal02" {
+  vpc_id     = aws_vpc.main.id
+  cidr_block = "10.0.5.0/21"
+  availability_zone = "us-east-1b"
+  tags = {
+    Name = "Internal02"
+  }
+}
 
 #Creates Internet Gateway Subnet
 resource "aws_internet_gateway" "ig1" {
