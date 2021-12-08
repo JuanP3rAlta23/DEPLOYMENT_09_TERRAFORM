@@ -62,3 +62,4 @@ resource "aws_route_table" "Private_RouteTable" {
     "Name" = "Private_RouteTable"
   }
 }
+#Create Route Table For Public Subnets
