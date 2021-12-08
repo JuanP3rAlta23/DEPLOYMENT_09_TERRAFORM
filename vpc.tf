@@ -36,3 +36,4 @@ resource "aws_subnet" "Private" {
     Name = "Private"
   }
 }
+#Creates Internal Subnet 1
