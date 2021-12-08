@@ -54,3 +54,4 @@ resource "aws_internet_gateway" "ig1" {
     
   }
 }
+#Creates "Public" Route Table 
