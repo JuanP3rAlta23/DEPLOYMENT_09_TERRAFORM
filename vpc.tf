@@ -71,3 +71,4 @@ resource "aws_nat_gateway" "natg1" {
   }
 }
 #Associates "Public" Route Table to Public Subnet 1
+resource "aws_route_table_association" "Publicroute1"
