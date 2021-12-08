@@ -70,3 +70,4 @@ resource "aws_nat_gateway" "natg1" {
     Name = "Private NAT"
   }
 }
+#Associates "Public" Route Table to Public Subnet 1
