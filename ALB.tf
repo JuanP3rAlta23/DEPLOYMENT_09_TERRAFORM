@@ -7,15 +7,7 @@ resource "aws_alb" "Deploy9ALB" {
       aws_subnet.Public01.id,
       aws_subnet.Public02.id
  ]
-
   enable_deletion_protection = true
-
-#   access_logs {
-#     bucket  = aws_s3_bucket.lb_logs.bucket
-#     prefix  = "Deploy9-lb"
-#     enabled = true
-#   }
-
   tags = {
     Environment = "production"
   }
