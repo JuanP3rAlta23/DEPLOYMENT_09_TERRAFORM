@@ -12,7 +12,7 @@ resource "aws_alb" "Deploy9ALB" {
     Environment = "production"
   }
 }
-
+ 
 resource "aws_security_group" "allow_80" {
   name        = "allow_80"
   description = "Allow port 80 for ALB"
