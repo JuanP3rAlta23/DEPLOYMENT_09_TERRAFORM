@@ -7,9 +7,9 @@ resource "aws_network_interface" "Deploy9_NI" {
     }
 }
 
-resource "aws_security_group" "allow_80" {
-  name        = "allow_80"
-  description = "allow port 80 for ALB"
+resource "aws_security_group" "allow_80_EC2" {
+  name        = "allow_80_EC2"
+  description = "allow port 80 inbound traffic for ec2"
   vpc_id      = aws_vpc.main.id
 
   ingress {
@@ -17,7 +17,7 @@ resource "aws_security_group" "allow_80" {
     from_port        = 80
     to_port          = 80
     protocol         = "tcp"
-    security_groups  = [aws_security_group.allow_80.id]
+    security_groups  = [aws_security_group.allow_80_EC2.id]
   }
 
   egress {
@@ -28,7 +28,7 @@ resource "aws_security_group" "allow_80" {
   }
 
   tags = {
-    Name = "allow_ALB"
+    Name = "allow_80"
   }
 }
 
