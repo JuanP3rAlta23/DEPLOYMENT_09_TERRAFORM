@@ -3,7 +3,7 @@ resource "aws_alb" "Deploy9ALB" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.allow_80.id]
-  subnets            = [aws_subnet.Public01.id,aws_subnet.Public02.id]
+  subnets            = [aws_subnet.Public01.id, aws_subnet.Public02.id]
   enable_deletion_protection = true
   tags = {
     Environment = "production"
