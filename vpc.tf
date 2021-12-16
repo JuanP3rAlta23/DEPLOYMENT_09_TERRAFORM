@@ -108,4 +108,5 @@ resource "aws_route_table_association" "Publicroute2" {
 #Associates "Private" Route Table to Private Subnet
 resource "aws_route_table_association" "Privateroute1" {
   subnet_id      = aws_subnet.Private.id
-  route_table_id = aws_route_table.Private_RouteTable.id
+  route_table_id = aws_route_table.Private_RouteTable.id 
+}
