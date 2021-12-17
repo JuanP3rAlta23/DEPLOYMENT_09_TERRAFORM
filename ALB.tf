@@ -44,6 +44,6 @@ resource "aws_alb_target_group" "tarEC2" {
 
 resource "aws_lb_target_group_attachment" "Attach_EC2" {
   target_group_arn = aws_alb_target_group.tarEC2.arn
-  target_id        = aws_instance.Deploy9_EC2.id
+  target_id        = aws_instance.ec2.id
   port             = 80
 }
