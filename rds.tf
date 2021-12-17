@@ -9,3 +9,4 @@ resource "aws_db_instance" "default" {
   password             = "DaDBPassword"
   skip_final_snapshot  = true
 }
+
