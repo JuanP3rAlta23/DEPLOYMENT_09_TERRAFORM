@@ -10,3 +10,11 @@ resource "aws_db_instance" "default" {
   skip_final_snapshot  = true
 }
 
+resource "aws_db_subnet_group" "internals-db" {
+  name       = "internalsdb"
+  subnet_ids = [aws_subnet.internal1.id, aws_subnet.internal2.id]
+
+  tags = {
+    Name = "DB-subnet-group"
+  }
+}
