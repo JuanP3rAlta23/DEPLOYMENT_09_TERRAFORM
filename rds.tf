@@ -8,10 +8,11 @@ resource "aws_db_instance" "default" {
   username             = "Juan"
   password             = "DaDBPassword"
   skip_final_snapshot  = true
+  db_subnet_group_name   = aws_db_subnet_group.internals-db.id
 }
 
 resource "aws_db_subnet_group" "internals-db" {
-  name       = "internalsdb"
+  name       = "internals-db"
   subnet_ids = [aws_subnet.internal1.id, aws_subnet.internal2.id]
 
   tags = {
